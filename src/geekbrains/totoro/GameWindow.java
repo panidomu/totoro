@@ -11,9 +11,9 @@ public class GameWindow extends JFrame {  //extends JFrame дописываем 
     private static Image totoro_bg;
     private static Image game_over;
     private static Image totoro_sticker;
-   private static float  left = -100;
+   private static float  left = -124;
    private static float top = 100;
-   private static float totoro_v =200;
+   private static float totoro_v =150;
 
 
 
@@ -25,7 +25,7 @@ public class GameWindow extends JFrame {  //extends JFrame дописываем 
         game_window = new GameWindow();
         game_window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         game_window.setLocation(200, 100);
-        game_window.setSize(906, 478);
+        game_window.setSize(1000, 600);
         game_window.setResizable(false);
         last_frame_time = System.nanoTime();
         GameField game_field = new GameField();
@@ -41,7 +41,9 @@ public class GameWindow extends JFrame {  //extends JFrame дописываем 
        left = left + totoro_v * delta_time;
      g.drawImage(totoro_bg, 0, 0, null);
     g.drawImage(totoro_sticker, (int) left, (int) top, null);
-       // g.drawImage(game_over, 0, 0, null);
+       //if (top > game_window.getHeight())
+      if (left > game_window.getWidth ())
+        g.drawImage(game_over, 0, 0, null);
 
     }
     private static class GameField extends JPanel {
